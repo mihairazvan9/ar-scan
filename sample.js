@@ -21,7 +21,7 @@ ArToolkitSource.init(function() {
 })
 
 const ArToolkitContext = new THREEx.ArToolkitContext({
-  cameraParametersUrl: 'camera_para.dat',
+  cameraParametersUrl: '/camera_para.dat',
   detectionMode: 'color_and_matrix',
 })
 
@@ -31,7 +31,7 @@ ArToolkitContext.init(function(){
 
 const ArMarkerControls = new THREEx.ArMarkerControls(ArToolkitContext, camera, {
   type: 'pattern',
-  patternUrl: 'pattern.patt',
+  patternUrl: '/pattern.patt',
   changeMatrixMode: 'cameraTransformMatrix'
 })
 
