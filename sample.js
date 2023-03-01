@@ -1,40 +1,59 @@
-// Setup for a-frame
-AFRAME.registerComponent('samplehandler', {
-  init: function () {
-    console.log("samplehandler init...")
-    let marker = this.el;
-    // let marker = this.el.sceneEl;
-
-    marker.addEventListener('markerFound', function () {
-      console.log("markerFound...");
-    }.bind(this));
-
-    marker.addEventListener('markerLost', function() {
-      console.log("markerLost...");
-    }.bind(this));
-  }
+const scene = new THREE.Scene();
+const camera = new THREE.Camera();
+scene.add(camera)
+const renderer = new THREE.WebGLRenderer({
+  antialias: true,
+  alpha: true
 });
+renderer.setSize( window.innerWidth, window.innerHeight );
+document.body.appendChild( renderer.domElement );
 
-AFRAME.registerComponent('modify-materials', {
-  init: function () {
-    let tex = new THREE.MeshBasicMaterial()
+const ArToolkitSource = new THREEx.ArToolkitSource({
+  sourceType: "webcam",
+})
 
-    // Wait for model to load.
-    this.el.addEventListener('model-loaded', () => {
-      // Grab the mesh / scene.
-      const obj = this.el.getObject3D('mesh');
-      // Go over the submeshes and modify materials we want.
-      obj.traverse(node => {
-        console.log("node.name:", node.name);
-        if (node.name === "blue") {
-          // node.material.color.set('red');
-          node.material.map = tex;
-        }
-      });
-    });
-  }
-});
+ArToolkitSource.init(function() {
+  setTimeout(() => {
+    ArToolkitSource.onResizeElement()
+    ArToolkitSource.copyElementSizeTo(renderer.domElement)
+  }, 2000)
+})
 
-window.onload = function() {
-  console.log("window loaded...");
-};
+const ArToolkitContext = new THREEx.ArToolkitContext({
+  cameraParametersUrl: 'camera_para.dat',
+  detectionMode: 'color_and_matrix',
+})
+
+ArToolkitContext.init(function(){
+  camera.projectionMatrix.copy(ArToolkitContext.getProjectionMatrix())
+})
+
+const ArMarkerControls = new THREEx.ArMarkerControls(ArToolkitContext, camera, {
+  type: 'pattern',
+  patternUrl: 'pattern.patt',
+  changeMatrixMode: 'cameraTransformMatrix'
+})
+
+scene.visible = false
+
+const geometry = new THREE.CubeGeometry( 1, 1, 1 );
+const material = new THREE.MeshNormalMaterial( {
+  transparent: true,
+  opacity: 0.5,
+  side: THREE.DoubleSide
+} );
+const cube = new THREE.Mesh( geometry, material );
+cube.position.y = geometry.parameters.height / 2
+scene.add( cube );
+
+
+function animate() {
+  requestAnimationFrame( animate );
+
+  ArToolkitContext.update(ArToolkitSource.domElement)
+  scene.visible = camera.visible
+
+  renderer.render( scene, camera );
+}
+
+animate();

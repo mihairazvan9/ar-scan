@@ -8,64 +8,27 @@
 
 
   </head>
-
-
-<!--  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r120/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.min.js"></script>
+<!--  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>-->
+<!--   we import arjs version without NFT but with marker + location based support -->
 <!--  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>-->
-  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
-  <!-- we import arjs version without NFT but with marker + location based support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 
   <body style="margin : 0px; overflow: hidden;">
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
-    <a-scene embedded arjs>
-      <a-marker preset="hiro">
-        <!-- we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server -->
-        <a-entity
-            position="0 0 0"
-            scale="0.5 0.5 0.5"
-            gltf-model="https://testenv.ro/files/cub.gltf"
-        ></a-entity>
-      </a-marker>
-      <a-entity camera></a-entity>
-    </a-scene>
 <!--    <a-scene embedded arjs>-->
-<!--      &lt;!&ndash; create your content here. just a box for now &ndash;&gt;-->
-<!--      <a-box position='0 0.5 0' material='opacity: 1;'></a-box>-->
-<!--      &lt;!&ndash; define a camera which will move according to the marker position &ndash;&gt;-->
-<!--      <a-marker-camera preset='hiro'></a-marker-camera>-->
-<!--    </a-scene>-->
-
-<!--    <a-scene-->
-<!--        vr-mode-ui="enabled: false;"-->
-<!--        renderer="logarithmicDepthBuffer: true;"-->
-<!--        embedded-->
-<!--        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">-->
-<!--      &lt;!&ndash; a-nft is the anchor that defines an Image Tracking entity &ndash;&gt;-->
-<!--      &lt;!&ndash; on 'url' use the path to the Image Descriptors created before. &ndash;&gt;-->
-<!--      &lt;!&ndash; the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex &ndash;&gt;-->
-<!--      <a-nft-->
-<!--          type='nft'-->
-<!--          url="https://testenv.ro/files/nft"-->
-<!--          smooth="true"-->
-<!--          smoothCount="10"-->
-<!--          smoothTolerance=".01"-->
-<!--          smoothThreshold="5">-->
+<!--      <a-marker preset="hiro">-->
+<!--        &lt;!&ndash; we use cors proxy to avoid cross-origin problems ATTENTION! you need to set up your server &ndash;&gt;-->
 <!--        <a-entity-->
-<!--            gltf-model="https://testenv.ro/files/cub.gltf"-->
-<!--            scale="10 10 10"-->
 <!--            position="0 0 0"-->
-<!--        >-->
-<!--        </a-entity>-->
-<!--      </a-nft>-->
-<!--      &lt;!&ndash; static camera that moves according to the device movemenents &ndash;&gt;-->
+<!--            scale="0.5 0.5 0.5"-->
+<!--            gltf-model="https://testenv.ro/files/cub.gltf"-->
+<!--        ></a-entity>-->
+<!--      </a-marker>-->
 <!--      <a-entity camera></a-entity>-->
 <!--    </a-scene>-->
-
-    <script>
-
-    </script>
+    <script src="sample.js"></script>
 
   </body>
 </html>
