@@ -14,40 +14,46 @@
 <!--  <script src="https://rawgit.com/mayognaise/aframe-gif-shader/master/dist/aframe-gif-shader.min.js"></script>-->
 <!--  <script src='./sample.js'></script>-->
 
-
-  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+<!--  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>-->
+<!--  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>-->
 
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
 
-
-
-    <a-scene
-        vr-mode-ui="enabled: false;"
-        renderer="logarithmicDepthBuffer: true;"
-        embedded
-        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-      <a-nft
-          type='nft'
-          url="https://testenv.ro/files/nft"
-          smooth="true"
-          smoothCount="10"
-          smoothTolerance=".01"
-          smoothThreshold="5">
-        <a-entity
-            gltf-model="https://testenv.ro/files/cub.gltf"
-            scale="1 1 1"
-            position="0 0 0"
-        >
-        </a-entity>
-      </a-nft>
-      <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
+    <a-scene embedded arjs>
+      <!-- create your content here. just a box for now -->
+      <a-box position='0 0.5 0' material='opacity: 0.5;'></a-box>
+      <!-- define a camera which will move according to the marker position -->
+      <a-marker-camera preset='hiro'></a-marker-camera>
     </a-scene>
+
+<!--    <a-scene-->
+<!--        vr-mode-ui="enabled: false;"-->
+<!--        renderer="logarithmicDepthBuffer: true;"-->
+<!--        embedded-->
+<!--        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">-->
+<!--      &lt;!&ndash; a-nft is the anchor that defines an Image Tracking entity &ndash;&gt;-->
+<!--      &lt;!&ndash; on 'url' use the path to the Image Descriptors created before. &ndash;&gt;-->
+<!--      &lt;!&ndash; the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex &ndash;&gt;-->
+<!--      <a-nft-->
+<!--          type='nft'-->
+<!--          url="https://testenv.ro/files/nft"-->
+<!--          smooth="true"-->
+<!--          smoothCount="10"-->
+<!--          smoothTolerance=".01"-->
+<!--          smoothThreshold="5">-->
+<!--        <a-entity-->
+<!--            gltf-model="https://testenv.ro/files/cub.gltf"-->
+<!--            scale="10 10 10"-->
+<!--            position="0 0 0"-->
+<!--        >-->
+<!--        </a-entity>-->
+<!--      </a-nft>-->
+<!--      &lt;!&ndash; static camera that moves according to the device movemenents &ndash;&gt;-->
+<!--      <a-entity camera></a-entity>-->
+<!--    </a-scene>-->
   </body>
 </html>
