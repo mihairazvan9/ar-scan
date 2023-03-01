@@ -1,4 +1,12 @@
 // import * as THREE from 'three'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+
+const loader = new GLTFLoader()
+let cube
+loader.load('https://testenv.ro/files/cub.gltf', (gltfScene) => {
+  cube = gltfScene.scene
+})
+
 const scene = new THREE.Scene();
 const camera = new THREE.Camera();
 scene.add(camera)
@@ -43,10 +51,11 @@ const material = new THREE.MeshNormalMaterial( {
   opacity: 0.5,
   side: THREE.DoubleSide
 } );
-const cube = new THREE.Mesh( geometry, material );
-cube.position.y = geometry.parameters.height / 2
-scene.add( cube );
-
+// const cube = new THREE.Mesh( geometry, material );
+setTimeout(() => {
+  cube.position.y = geometry.parameters.height / 2
+  scene.add(cube);
+},2000)
 
 function animate() {
   requestAnimationFrame( animate );
