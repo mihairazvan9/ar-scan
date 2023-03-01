@@ -1,7 +1,8 @@
 <script setup>
   // import patt from './assets/ar/pattern-173941091_835664203961409_5789995235306138562_n (1)'
   import blue from './assets/ar/blue.png'
-  import car from './assets/ar/car.glb'
+  // import car from './assets/ar/car.glb'
+  import car from './assets/ar/cub.gltf'
   import nft from './assets/ar/nft.fset3'
 </script>
 
@@ -28,40 +29,34 @@
 <!--  </a-scene>-->
 
 
-  <div class="arjs-loader">
-    <div>Loading...</div>
-  </div>
-  <a-scene
-      vr-mode-ui="enabled: false;"
-      renderer='antialias: true; alpha: true; precision: mediump;'
-      embedded arjs='trackingMethod: best; sourceType: webcam; debugUIEnabled: false;'
-  >
-    <a-assets>
-      <!-- <a-asset-item id="model" src="../resources/sample-entity.glb"></a-asset-item> -->
-      <a-asset-item id="model" :src="car"></a-asset-item>
-      <img id="tex-image" :src="blue">
-    </a-assets>
 
-    <!-- <a-nft
-        samplehandler
-        type='nft' url="../resources/ramen-1000px"
-        smooth="true" smoothCount="10" smoothTolerance="0.01" smoothThreshold="5"
-    > -->
-    <a-nft
-        samplehandler
-        type='nft' :url="nft"
-        smooth="true"
-        smoothCount="10"
-        smoothTolerance="0.01"
-        smoothThreshold="5"
-    >
-      <!-- <a-entity modify-materials gltf-model="#model" material="src:#tex-image" play-all-model-animations="" position="0 0 0" rotation="0 0 0" scale="100 100 100" visible="true">
-      </a-entity> -->
-      <a-entity modify-materials gltf-model="#model" play-all-model-animations="" position="0 500 0" rotation="-90 0 0" scale="50 50 50" visible="true">
-      </a-entity>
-    </a-nft>
-    <a-entity camera></a-entity>
-  </a-scene>
+
+    <a-scene
+        vr-mode-ui="enabled: false;"
+        renderer="logarithmicDepthBuffer: true;"
+        embedded
+        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
+      <!-- a-nft is the anchor that defines an Image Tracking entity -->
+      <!-- on 'url' use the path to the Image Descriptors created before. -->
+      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
+      <a-nft
+          type='nft'
+          url="https://testenv.ro/files/nft"
+          smooth="true"
+          smoothCount="10"
+          smoothTolerance=".01"
+          smoothThreshold="5">
+        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
+        <a-entity
+            :gltf-model="car"
+            scale="5 5 5"
+            position="100 100 0"
+        >
+        </a-entity>
+      </a-nft>
+      <!-- static camera that moves according to the device movemenents -->
+      <a-entity camera></a-entity>
+    </a-scene>
 </template>
 
 <style lang="scss">
