@@ -11,5 +11,5 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
-  assetsInclude: ['**/*.glb', '**/*.patt', '**/*.usdz']
+  assetsInclude: ['**/*.glb', '**/*.patt', '**/*.usdz', '**/*.iset', '**/*.fset3', '**/*.fset']
 })
