@@ -31,32 +31,31 @@
 
 
 
-    <a-scene
-        vr-mode-ui="enabled: false;"
-        renderer="logarithmicDepthBuffer: true;"
-        embedded
-        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">
-      <!-- a-nft is the anchor that defines an Image Tracking entity -->
-      <!-- on 'url' use the path to the Image Descriptors created before. -->
-      <!-- the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex -->
-      <a-nft
-          type='nft'
-          url="https://testenv.ro/files/nft"
-          smooth="true"
-          smoothCount="10"
-          smoothTolerance=".01"
-          smoothThreshold="5">
-        <!-- as a child of the a-nft entity, you can define the content to show. here's a GLTF model entity -->
-        <a-entity
-            :gltf-model="car"
-            scale="5 5 5"
-            position="100 100 0"
-        >
-        </a-entity>
-      </a-nft>
-      <!-- static camera that moves according to the device movemenents -->
-      <a-entity camera></a-entity>
-    </a-scene>
+<!--    <a-scene-->
+<!--        vr-mode-ui="enabled: false;"-->
+<!--        renderer="logarithmicDepthBuffer: true;"-->
+<!--        embedded-->
+<!--        arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;">-->
+<!--      &lt;!&ndash; a-nft is the anchor that defines an Image Tracking entity &ndash;&gt;-->
+<!--      &lt;!&ndash; on 'url' use the path to the Image Descriptors created before. &ndash;&gt;-->
+<!--      &lt;!&ndash; the path should end with the name without the extension e.g. if file is trex.fset' the path should end with trex &ndash;&gt;-->
+<!--      <a-nft-->
+<!--          type='nft'-->
+<!--          url="https://testenv.ro/files/nft"-->
+<!--          smooth="true"-->
+<!--          smoothCount="10"-->
+<!--          smoothTolerance=".01"-->
+<!--          smoothThreshold="5">-->
+<!--        <a-entity-->
+<!--            :gltf-model="car"-->
+<!--            scale="5 5 5"-->
+<!--            position="100 100 0"-->
+<!--        >-->
+<!--        </a-entity>-->
+<!--      </a-nft>-->
+<!--      &lt;!&ndash; static camera that moves according to the device movemenents &ndash;&gt;-->
+<!--      <a-entity camera></a-entity>-->
+<!--    </a-scene>-->
 </template>
 
 <style lang="scss">
