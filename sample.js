@@ -21,6 +21,36 @@ const ArToolkitSource = new THREEx.ArToolkitSource({
   sourceType: "webcam",
 })
 
+
+// Create a raycaster and a mouse vector
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+
+// Listen for click events on the renderer dom element
+renderer.domElement.addEventListener('click', onClick, false);
+
+function onClick(event) {
+  // Calculate mouse position
+  mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
+  mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
+
+  // Cast a ray from the camera to the mouse position
+  raycaster.setFromCamera(mouse, camera);
+
+  // Find all intersected objects
+  const intersects = raycaster.intersectObjects(scene.children);
+
+  // Check if any of the intersected objects is the cube
+  for (let i = 0; i < intersects.length; i++) {
+    if (intersects[i].object === cube) {
+      window.open('https://bluegrassthc.com/', '_blank');
+      // Cube was clicked
+      console.log('Cube clicked!');
+    }
+  }
+}
+
+
 ArToolkitSource.init(function() {
   setTimeout(() => {
     ArToolkitSource.onResizeElement()
